@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>異分野の統合理論の圏論による統一的理解</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .slide-container {
+            width: 297mm;
+            height: 210mm;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.6);
+            transform-origin: center;
+        }
+        
+        .slide {
+            display: none;
+            padding: 40px 50px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .slide-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .main-title {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .main-subtitle {
+            font-size: 1.8em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .formula {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: 500;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .author-name {
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        
+        .theory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .theory-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .theory-card h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .theory-card p {
+            font-size: 1.1em;
+            color: #34495e;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+        
+        .spectrum {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(90deg, #74b9ff, #ffffff, #fd79a8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .spectrum-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+        
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .page-info {
+            background: #34495e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .bullet-list li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 0 10px 10px 0;
+            font-size: 1.1em;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .conclusion-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+        
+        .author-info {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide-container">
+        <div class="slide active">
+            <div class="slide-content">
+                <h1 class="main-title">異分野の統合理論</h1>
+                <h2 class="main-subtitle">～構造構成主義、批判的実在論、IEEE42010～<br>の圏論による統一的理解</h2>
+                <div class="formula">
+                    統合的理解 = lim(Family of Perspective-Functors)
+                </div>
+                <div class="author-name">
+                    著者：片山　立
+                </div>
+                <div class="author-info">
+                    <p>新幹線での発見から生まれた学問横断的統合理論</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2: Background -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">発見の背景</h2>
+                <p class="slide-subtitle">新幹線での閃きから普遍的統合理論へ</p>
+            </div>
+            <div class="slide-content">
+                <div class="theory-grid">
+                    <div class="theory-card">
+                        <h3>IEEE 42010</h3>
+                        <p>システム・ソフトウェア<br>アーキテクチャ記述</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>構造構成主義</h3>
+                        <p>社会科学統合の<br>メタ理論</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>批判的実在論</h3>
+                        <p>全学問領域の<br>哲学的基盤</p>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>発見：</strong>Viewpoint = Functor という圏論的洞察により、3つの異なる分野の理論が本質的に同じ数学的構造を持つことが判明
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Common Structure -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">共通の圏論的構造</h2>
+                <p class="slide-subtitle">普遍的統合パターンの発見</p>
+            </div>
+            <div class="slide-content">
+                <div class="formula">
+                    統合的理解 = lim(Family of Perspective-Functors)
+                </div>
+                <div class="two-column">
+                    <div>
+                        <h3>各理論の圏論的表現</h3>
+                        <ul class="bullet-list">
+                            <li><strong>IEEE 42010:</strong><br>Architecture = lim({Viewpoint-Functors})</li>
+                            <li><strong>構造構成主義:</strong><br>Understanding = lim({Theory-Functors})</li>
+                            <li><strong>批判的実在論:</strong><br>Reality-Knowledge = lim({Layer-Functors})</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>共通要素</h3>
+                        <ul class="bullet-list">
+                            <li>対象（Object）: 複雑な現象・システム</li>
+                            <li>視点（Perspective）: 理解の枠組み</li>
+                            <li>関手（Functor）: 構造保持変換</li>
+                            <li>極限（Limit）: 統合的理解</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Correspondence Table -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">圏論的要素の対応</h2>
+                <p class="slide-subtitle">3つの理論の構造的同型性</p>
+            </div>
+            <div class="slide-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>圏論的要素</th>
+                            <th>IEEE 42010</th>
+                            <th>構造構成主義</th>
+                            <th>批判的実在論</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>基本対象</strong></td>
+                            <td>System of Interest</td>
+                            <td>Phenomenon</td>
+                            <td>Reality/Real Domain</td>
+                        </tr>
+                        <tr>
+                            <td><strong>視点概念</strong></td>
+                            <td>Viewpoint</td>
+                            <td>理論的立場</td>
+                            <td>Layer-Disciplinary Perspective</td>
+                        </tr>
+                        <tr>
+                            <td><strong>関手</strong></td>
+                            <td>F: SoC → View</td>
+                            <td>F: Phenomenon → Framework</td>
+                            <td>F: Reality-Layer → Knowledge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>統合結果</strong></td>
+                            <td>Architecture</td>
+                            <td>統合的理解</td>
+                            <td>Critical Realist Knowledge</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="conclusion-box">
+                    <strong>結論：</strong>IEEE 42010 ≃ 構造構成主義 ≃ 批判的実在論<br>
+                    （圏同値：本質的に同じ数学的構造）
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Subjectivity Handling -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">主観性の圏論的処理</h2>
+                <p class="slide-subtitle">3つの理論の認識論的特徴</p>
+            </div>
+            <div class="slide-content">
+                <div class="theory-grid">
+                    <div class="theory-card">
+                        <h3>構造構成主義</h3>
+                        <p><strong>関心相関性</strong></p>
+                        <p>η: Id ⇒ F_interest</p>
+                        <p>主観性が関手の定義域に組み込まれる</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>批判的実在論</h3>
+                        <p><strong>認識論的相対性</strong></p>
+                        <p>対象は固定、射は可変</p>
+                        <p>F: Reality-Layer → Knowledge</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>IEEE 42010</h3>
+                        <p><strong>標準化された関手</strong></p>
+                        <p>Viewpoint = 再利用可能な関手</p>
+                        <p>F: SoC → View</p>
+                    </div>
+                </div>
+                <div class="spectrum">
+                    <div class="spectrum-item">IEEE 42010<br>(標準化)</div>
+                    <div class="spectrum-item">批判的実在論<br>(中間的立場)</div>
+                    <div class="spectrum-item">構造構成主義<br>(関心相関)</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Multi-layer Structure -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">多層構造の圏論的表現</h2>
+                <p class="slide-subtitle">関手合成による階層的理解</p>
+            </div>
+            <div class="slide-content">
+                <div class="theory-grid">
+                    <div class="theory-card">
+                        <h3>批判的実在論</h3>
+                        <p>Real → Actual → Empirical</p>
+                        <p>F_empirical ∘ F_actual ∘ F_real</p>
+                        <p>創発 = 自然変換</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>構造構成主義</h3>
+                        <p>構造 → 機能 → 現象</p>
+                        <p>構造 = 保たれる圏論的性質</p>
+                        <p>機能 = 関手的変換</p>
+                    </div>
+                    <div class="theory-card">
+                        <h3>IEEE 42010</h3>
+                        <p>Concern → Viewpoint → View → Model</p>
+                        <p>段階的関手合成</p>
+                        <p>構造保持による一貫性</p>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>共通パターン：</strong>多層的現実を関手合成により段階的に変換し、最終的に統合的理解に到達
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Integration Mechanisms -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">統合メカニズムの相違</h2>
+                <p class="slide-subtitle">極限・余極限による統合の違い</p>
+            </div>
+            <div class="slide-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>特徴</th>
+                            <th>構造構成主義</th>
+                            <th>批判的実在論</th>
+                            <th>IEEE 42010</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>統合型</strong></td>
+                            <td>余極限(colimit)</td>
+                            <td>極限(limit)</td>
+                            <td>極限(limit)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>多様性処理</strong></td>
+                            <td>包含的統合</td>
+                            <td>階層的統合</td>
+                            <td>標準化統合</td>
+                        </tr>
+                        <tr>
+                            <td><strong>一貫性保証</strong></td>
+                            <td>柔軟な自然変換</td>
+                            <td>厳密な自然変換</td>
+                            <td>規格化された対応</td>
+                        </tr>
+                        <tr>
+                            <td><strong>適用圏</strong></td>
+                            <td>Human Science圏</td>
+                            <td>Universal Science圏</td>
+                            <td>System Engineering圏</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="formula">
+                    同じパターン、異なる具現化：多視点統合の普遍的メカニズム
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Practical Implications -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">実用的含意</h2>
+                <p class="slide-subtitle">学問横断的知識転用の理論的基盤</p>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div>
+                        <h3>応用領域での特化</h3>
+                        <ul class="bullet-list">
+                            <li><strong>IEEE 42010:</strong><br>System Engineering圏への特化</li>
+                            <li><strong>構造構成主義:</strong><br>Human Science圏への特化</li>
+                            <li><strong>批判的実在論:</strong><br>Universal Science圏への適用</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>方法論の圏論的根拠</h3>
+                        <ul class="bullet-list">
+                            <li><strong>構造構成主義:</strong><br>方法の原理 = 関手の選択原理</li>
+                            <li><strong>批判的実在論:</strong><br>逆推論 = 関手の逆像による構造発見</li>
+                            <li><strong>IEEE 42010:</strong><br>標準化 = 関手の正規化</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="conclusion-box">
+                    <strong>革新的価値：</strong>異分野間の知識転用が数学的に正当化され、<br>
+                    システム設計 ↔ 社会科学研究の統合的アプローチが可能に
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 9: Conclusion -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">統合的結論</h2>
+                <p class="slide-subtitle">学問統一の数学的基盤の確立</p>
+            </div>
+            <div class="slide-content">
+                <div class="formula">
+                    普遍的多視点統合理論<br>
+                    ↓ 具現化<br>
+                    IEEE 42010 ≃ 構造構成主義 ≃ 批判的実在論
+                </div>
+                <div class="two-column">
+                    <div>
+                        <h3>発見の意義</h3>
+                        <ul class="bullet-list">
+                            <li>学問横断的統合の数学的基盤</li>
+                            <li>異分野知識転用の理論的根拠</li>
+                            <li>複雑系理解の統一的枠組み</li>
+                            <li>新しい学問パラダイムの提示</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>今後の展望</h3>
+                        <ul class="bullet-list">
+                            <li>人間理解の新しい数学的言語</li>
+                            <li>理論と実践の統合的アプローチ</li>
+                            <li>学際研究の革新的方法論</li>
+                            <li>社会課題解決への応用</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight">
+                    <strong>新幹線での閃きが学問史に残る発見に：</strong><br>
+                    数学が人間を理解する新しい言語となる時代の到来
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn" onclick="previousSlide()" id="prevBtn">前へ</button>
+            <span class="page-info" id="pageInfo">1 / 9</span>
+            <button class="nav-btn" onclick="nextSlide()" id="nextBtn">次へ</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            
+            // Update navigation
+            document.getElementById('pageInfo').textContent = `${n + 1} / ${totalSlides}`;
+            document.getElementById('prevBtn').disabled = n === 0;
+            document.getElementById('nextBtn').disabled = n === totalSlides - 1;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
