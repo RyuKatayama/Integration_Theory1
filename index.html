@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>異分野の統合理論の圏論による統一的理解</title>
+    <title>異分野の統合理論の圏論による統一的理解 - 完全版</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
         
@@ -38,7 +38,7 @@
         
         .slide {
             display: none;
-            padding: 40px 50px;
+            padding: 35px 45px 80px 45px;
             height: 100%;
             position: relative;
             overflow: hidden;
@@ -51,22 +51,22 @@
         
         .slide-header {
             border-bottom: 3px solid #667eea;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
         }
         
         .slide-title {
-            font-size: 2.5em;
+            font-size: 2.3em;
             font-weight: 700;
             color: #2c3e50;
             text-align: center;
         }
         
         .slide-subtitle {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #7f8c8d;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .slide-content {
@@ -187,12 +187,13 @@
         
         .navigation {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             gap: 15px;
             align-items: center;
+            z-index: 1000;
         }
         
         .nav-btn {
@@ -242,8 +243,8 @@
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 20px 0;
+            gap: 25px;
+            margin: 15px 0;
         }
         
         .conclusion-box {
@@ -261,11 +262,151 @@
             font-size: 1em;
             margin-top: 20px;
         }
+
+        /* 概要スライド用の追加スタイル */
+        .key-point {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            text-align: center;
+            font-weight: 600;
+            margin: 15px 0;
+            border-left: 5px solid #e91e63;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            margin: 15px 0;
+            border: 2px solid #667eea;
+            line-height: 1.3;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .benefit-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-card h4 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .benefit-card p {
+            font-size: 0.95em;
+            color: #34495e;
+            line-height: 1.3;
+        }
+        
+        .ieee-metamodel {
+            background: #ffffff;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .metamodel-svg {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+        }
+        
+        .principles-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .principles-list li {
+            background: linear-gradient(135deg, #e3ffe7 0%, #d9e7ff 100%);
+            margin: 8px 0;
+            padding: 15px;
+            border-left: 5px solid #28a745;
+            border-radius: 0 10px 10px 0;
+            font-size: 1.0em;
+            line-height: 1.3;
+        }
+        
+        .principles-list li strong {
+            color: #2c3e50;
+            font-size: 1.05em;
+        }
+        
+        .domain-structure {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .domain-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.0em;
+            flex: 1;
+            margin: 0 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 0 15px;
+        }
+        
+        .author-credit {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .section-divider {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .section-divider h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .section-divider p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
-    <!-- Slide 1: Title -->
     <div class="slide-container">
+        <!-- 全体タイトルスライド -->
         <div class="slide active">
             <div class="slide-content">
                 <h1 class="main-title">異分野の統合理論</h1>
@@ -278,11 +419,342 @@
                 </div>
                 <div class="author-info">
                     <p>新幹線での発見から生まれた学問横断的統合理論</p>
+                    <p style="margin-top: 20px; font-size: 1.1em;">【構成】理論概要 → 圏論的統合分析 → 実用的含意</p>
                 </div>
             </div>
         </div>
-        
-        <!-- Slide 2: Background -->
+
+        <!-- セクション1：IEEE 42010 -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-divider">
+                    <h2>第1部：基礎理論の理解</h2>
+                    <p>IEEE 42010・構造構成主義・批判的実在論</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- IEEE 42010 Slide 1 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">IEEE 42010とは？</h2>
+                <p class="slide-subtitle">システム・ソフトウェアアーキテクチャ記述の国際標準</p>
+            </div>
+            <div class="slide-content">
+                <div class="definition-box">
+                    <strong>IEEE 42010</strong>は、複雑なシステムのアーキテクチャを効果的に記述・共有するための国際標準規格
+                </div>
+                
+                <div class="key-point">
+                    なぜ必要？複雑なシステムを異なる視点から理解し、ステークホルダー間で確実に共有したい
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4>🎯 明確な意思疎通</h4>
+                        <p>技術者、顧客、管理者など、異なる立場の人々が同じシステムについて正確に議論できる</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>📐 標準化された記述</h4>
+                        <p>世界共通の枠組みにより、どの組織でも理解可能なアーキテクチャ文書を作成</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🔍 多視点での分析</h4>
+                        <p>セキュリティ、性能、保守性など、様々な観点からシステムを体系的に検討</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>⚡ 開発効率向上</h4>
+                        <p>設計の不整合や要求の見落としを早期発見し、手戻りコストを削減</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IEEE 42010 Slide 2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">IEEE 42010 メタモデル</h2>
+                <p class="slide-subtitle">アーキテクチャ記述の構造的枠組み</p>
+            </div>
+            <div class="slide-content">
+                <div class="ieee-metamodel">
+                    <svg class="metamodel-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                        <!-- System of Interest -->
+                        <rect x="50" y="50" width="120" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                        <text x="110" y="75" text-anchor="middle" font-size="12" font-weight="bold">System of</text>
+                        <text x="110" y="90" text-anchor="middle" font-size="12" font-weight="bold">Interest</text>
+                        
+                        <!-- Architecture -->
+                        <rect x="600" y="50" width="120" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+                        <text x="660" y="80" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
+                        
+                        <!-- Stakeholder -->
+                        <rect x="50" y="170" width="120" height="60" fill="#e8f5e8" stroke="#388e3c" stroke-width="2"/>
+                        <text x="110" y="200" text-anchor="middle" font-size="12" font-weight="bold">利害関係者</text>
+                        
+                        <!-- Architecture Description -->
+                        <rect x="300" y="170" width="120" height="60" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+                        <text x="360" y="195" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
+                        <text x="360" y="210" text-anchor="middle" font-size="12" font-weight="bold">記述</text>
+                        
+                        <!-- Concern -->
+                        <rect x="50" y="290" width="120" height="60" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
+                        <text x="110" y="320" text-anchor="middle" font-size="12" font-weight="bold">関心事</text>
+                        
+                        <!-- Architecture Viewpoint -->
+                        <rect x="250" y="290" width="120" height="60" fill="#e1f5fe" stroke="#0277bd" stroke-width="2"/>
+                        <text x="310" y="315" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
+                        <text x="310" y="330" text-anchor="middle" font-size="12" font-weight="bold">ビューポイント</text>
+                        
+                        <!-- Architecture View -->
+                        <rect x="450" y="290" width="120" height="60" fill="#f1f8e9" stroke="#689f38" stroke-width="2"/>
+                        <text x="510" y="315" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
+                        <text x="510" y="330" text-anchor="middle" font-size="12" font-weight="bold">ビュー</text>
+                        
+                        <!-- Architecture Rationale -->
+                        <rect x="600" y="170" width="120" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+                        <text x="660" y="195" text-anchor="middle" font-size="12" font-weight="bold">Architecture</text>
+                        <text x="660" y="210" text-anchor="middle" font-size="12" font-weight="bold">Rationale</text>
+                        
+                        <!-- Model Kind -->
+                        <rect x="200" y="410" width="100" height="50" fill="#f5f5f5" stroke="#757575" stroke-width="2"/>
+                        <text x="250" y="440" text-anchor="middle" font-size="11">Model Kind</text>
+                        
+                        <!-- Architecture Model -->
+                        <rect x="400" y="410" width="100" height="50" fill="#f5f5f5" stroke="#757575" stroke-width="2"/>
+                        <text x="450" y="430" text-anchor="middle" font-size="11">Architecture</text>
+                        <text x="450" y="445" text-anchor="middle" font-size="11">Model</text>
+                        
+                        <!-- Correspondence Rule -->
+                        <rect x="550" y="290" width="100" height="30" fill="#ffecb3" stroke="#ff8f00" stroke-width="1"/>
+                        <text x="600" y="310" text-anchor="middle" font-size="10">コレスポンデンス</text>
+                        
+                        <!-- Correspondence -->
+                        <rect x="650" y="290" width="100" height="30" fill="#ffecb3" stroke="#ff8f00" stroke-width="1"/>
+                        <text x="700" y="310" text-anchor="middle" font-size="10">コレスポンデンス</text>
+                        
+                        <!-- Arrows -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                            </marker>
+                        </defs>
+                        
+                        <!-- System of Interest -> Architecture -->
+                        <line x1="170" y1="80" x2="600" y2="80" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+                        <text x="385" y="75" text-anchor="middle" font-size="10">exhibits</text>
+                        
+                        <!-- Stakeholder -> Concern -->
+                        <line x1="110" y1="230" x2="110" y2="290" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+                        <text x="130" y="260" font-size="10">has</text>
+                        
+                        <!-- Concern -> Viewpoint -->
+                        <line x1="170" y1="320" x2="250" y2="320" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+                        <text x="210" y="315" text-anchor="middle" font-size="10">frames</text>
+                        
+                        <!-- Viewpoint -> View -->
+                        <line x1="370" y1="320" x2="450" y2="320" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+                        <text x="410" y="315" text-anchor="middle" font-size="10">governs</text>
+                        
+                        <!-- Architecture Description links -->
+                        <line x1="360" y1="230" x2="360" y2="290" stroke="#333" stroke-width="1"/>
+                        <line x1="300" y1="200" x2="250" y2="200" stroke="#333" stroke-width="1"/>
+                        <line x1="420" y1="200" x2="450" y2="200" stroke="#333" stroke-width="1"/>
+                    </svg>
+                </div>
+                
+                <div class="key-point">
+                    <strong>キーポイント：</strong>「ビューポイント」= 特定の関心事に対する標準的な見方の枠組み<br>
+                    → これが圏論の「関手（Functor）」と同じ数学的構造！
+                </div>
+            </div>
+        </div>
+
+        <!-- 構造構成主義 Slide 1 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">構造構成主義とは？</h2>
+                <p class="slide-subtitle">人間科学統合のメタ理論（西條剛央 提唱）</p>
+            </div>
+            <div class="slide-content">
+                <div class="definition-box">
+                    <strong>構造構成主義</strong>は、心理学・教育学・社会学などの人間科学分野で対立する理論や方法論を統合するメタ理論
+                </div>
+                
+                <div class="key-point">
+                    核心思想：「現実は一つだが、見方は無数にある。目的に応じて最適な見方・方法を選択しよう」
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4>🤝 理論統合</h4>
+                        <p>対立する理論を「どちらが正しいか」ではなく「どの場面で有効か」の観点で統合</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🎯 実践的指針</h4>
+                        <p>現場の専門家が具体的な状況に応じて適切な方法を選択するための明確な原理を提供</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🌟 多様性尊重</h4>
+                        <p>異なる視点や価値観を排除せず、それぞれの有効性を認めながら活用</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🔬 科学的厳密性</h4>
+                        <p>主観性を認めながらも、現象学的還元により客観的な検討を可能にする</p>
+                    </div>
+                </div>
+                
+                <div class="author-credit">
+                    西條剛央『構造構成主義とは何か』（2005年）より
+                </div>
+            </div>
+        </div>
+
+        <!-- 構造構成主義 Slide 2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">構造構成主義の4つの原理</h2>
+                <p class="slide-subtitle">実践的統合を可能にする基本原理</p>
+            </div>
+            <div class="slide-content">
+                <ul class="principles-list">
+                    <li>
+                        <strong>① 関心相関性</strong><br>
+                        人の関心によって現れる世界が変わる。同じ現象でも、見る人の関心次第で異なる側面が浮かび上がる
+                        <br><em>例：学校を見る → 建築家は構造を、教師は教育環境を、生徒は友達関係を重視</em>
+                    </li>
+                    <li>
+                        <strong>② 方法の原理</strong><br>
+                        目的に応じて最適な方法を選択する。「絶対的に正しい方法」ではなく「この目的にはこの方法」
+                        <br><em>例：基礎学力向上にはドリル学習、創造性向上には自由研究が有効</em>
+                    </li>
+                    <li>
+                        <strong>③ 現象学的還元</strong><br>
+                        先入観を「括弧に入れ」、現象をありのままに見る。判断を保留して事象そのものを理解
+                        <br><em>例：不登校を「問題行動」と決めつけず、その子の体験を理解する</em>
+                    </li>
+                    <li>
+                        <strong>④ 志向相関性</strong><br>
+                        意識は常に「何かについての」意識。対象と意識の関係性に注目して構造を理解
+                        <br><em>例：「学習する」といっても、何を・なぜ・どのように学ぶかで構造が変わる</em>
+                    </li>
+                </ul>
+                
+                <div class="key-point">
+                    これらの原理が数学的には「関手の選択」「極限操作による統合」と対応！
+                </div>
+            </div>
+        </div>
+
+        <!-- 批判的実在論 Slide 1 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">批判的実在論とは？</h2>
+                <p class="slide-subtitle">社会科学の哲学的基盤（ロイ・バスカー 提唱）</p>
+            </div>
+            <div class="slide-content">
+                <div class="definition-box">
+                    <strong>批判的実在論（Critical Realism）</strong>は、実証主義と解釈主義の対立を超える「第三の道」として提唱された社会科学の哲学的基盤
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4>🔬 実証主義の限界</h4>
+                        <p>「観察できる事実のみが知識」→ 複雑な社会現象の背後にある構造やメカニズムを見落とす</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🎭 解釈主義の限界</h4>
+                        <p>「すべては解釈」→ 相対主義に陥り、客観的な知識や普遍性の確保が困難</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>⚖️ 批判的実在論の解決</h4>
+                        <p>客観的実在を認めつつ、認識の多様性も受け入れる。構造とメカニズムの科学的解明を目指す</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🌐 説明的社会科学</h4>
+                        <p>予測よりも「説明力」を重視。開放システムとしての社会の複雑性を受け入れつつ理論構築</p>
+                    </div>
+                </div>
+                
+                <div class="key-point">
+                    現代の複雑な課題（気候変動、AI倫理、格差問題など）に対応できる統合的な知識基盤を提供
+                </div>
+                
+                <div class="author-credit">
+                    ロイ・バスカー『実在論的社会理論』（1979年）より
+                </div>
+            </div>
+        </div>
+
+        <!-- 批判的実在論 Slide 2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2 class="slide-title">実在の3つのドメイン</h2>
+                <p class="slide-subtitle">批判的実在論の中核概念</p>
+            </div>
+            <div class="slide-content">
+                <div class="domain-structure">
+                    <div class="domain-box">
+                        <strong>実在的ドメイン</strong><br>
+                        (Real Domain)<br><br>
+                        根本的な構造・メカニズム<br>
+                        物理法則、社会構造、<br>
+                        認知メカニズムなど
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="domain-box">
+                        <strong>現実的ドメイン</strong><br>
+                        (Actual Domain)<br><br>
+                        実際に起こる出来事<br>
+                        現象、行動、<br>
+                        社会現象など
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="domain-box">
+                        <strong>経験的ドメイン</strong><br>
+                        (Empirical Domain)<br><br>
+                        観察・体験される事柄<br>
+                        データ、測定値、<br>
+                        体験報告など
+                    </div>
+                </div>
+                
+                <div class="definition-box">
+                    <strong>具体例：教育格差の理解</strong><br>
+                    <strong>実在的：</strong>経済構造、文化構造、認知メカニズム<br>
+                    <strong>現実的：</strong>進学行動、学習活動、家庭の教育投資<br>
+                    <strong>経験的：</strong>学力テスト結果、進学率統計、インタビュー調査
+                </div>
+                
+                <div class="key-point">
+                    この3層構造が「関手合成」F₃ ∘ F₂ ∘ F₁ の数学的構造と対応！<br>
+                    異なる学問分野も同じ構造で統合的に理解可能
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4>🔍 構造的説明</h4>
+                        <p>表面的な現象の背後にある根本的なメカニズムを解明</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h4>🌍 学問統合</h4>
+                        <p>物理学、心理学、社会学などを共通の枠組みで理解</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション2：統合理論 -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-divider">
+                    <h2>第2部：圏論的統合分析</h2>
+                    <p>3つの理論の数学的統一構造の発見</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">発見の背景</h2>
@@ -309,7 +781,7 @@
             </div>
         </div>
         
-        <!-- Slide 3: Common Structure -->
+        <!-- Common Structure -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">共通の圏論的構造</h2>
@@ -341,7 +813,7 @@
             </div>
         </div>
         
-        <!-- Slide 4: Correspondence Table -->
+        <!-- Correspondence Table -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">圏論的要素の対応</h2>
@@ -391,7 +863,7 @@
             </div>
         </div>
         
-        <!-- Slide 5: Subjectivity Handling -->
+        <!-- Subjectivity Handling -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">主観性の圏論的処理</h2>
@@ -426,7 +898,7 @@
             </div>
         </div>
         
-        <!-- Slide 6: Multi-layer Structure -->
+        <!-- Multi-layer Structure -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">多層構造の圏論的表現</h2>
@@ -459,7 +931,7 @@
             </div>
         </div>
         
-        <!-- Slide 7: Integration Mechanisms -->
+        <!-- Integration Mechanisms -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">統合メカニズムの相違</h2>
@@ -508,7 +980,7 @@
             </div>
         </div>
         
-        <!-- Slide 8: Practical Implications -->
+        <!-- Practical Implications -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">実用的含意</h2>
@@ -540,7 +1012,7 @@
             </div>
         </div>
         
-        <!-- Slide 9: Conclusion -->
+        <!-- Conclusion -->
         <div class="slide">
             <div class="slide-header">
                 <h2 class="slide-title">統合的結論</h2>
@@ -582,7 +1054,7 @@
         <!-- Navigation -->
         <div class="navigation">
             <button class="nav-btn" onclick="previousSlide()" id="prevBtn">前へ</button>
-            <span class="page-info" id="pageInfo">1 / 9</span>
+            <span class="page-info" id="pageInfo">1 / 15</span>
             <button class="nav-btn" onclick="nextSlide()" id="nextBtn">次へ</button>
         </div>
     </div>
