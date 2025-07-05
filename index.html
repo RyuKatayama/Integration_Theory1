@@ -38,7 +38,7 @@
         
         .slide {
             display: none;
-            padding: 35px 45px 80px 45px;
+            padding: 25px 35px 90px 35px;
             height: 100%;
             position: relative;
             overflow: hidden;
@@ -402,6 +402,137 @@
             font-size: 1.3em;
             opacity: 0.9;
         }
+
+        /* 圏論解説用の新しいスタイル */
+        .category-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .category-object {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            font-weight: 700;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            margin: 0 40px;
+        }
+
+        .category-arrow {
+            position: relative;
+            width: 70px;
+            height: 3px;
+            background: #e17055;
+            margin: 0 15px;
+        }
+
+        .category-arrow::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -7px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid #e17055;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+        }
+
+        .category-arrow-label {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85em;
+            color: #e17055;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .category-properties {
+            background: linear-gradient(135deg, #e3ffe7 0%, #d9e7ff 100%);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .category-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .category-example {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 3px solid #ff6b6b;
+        }
+
+        .category-example h4 {
+            color: #2c3e50;
+            font-size: 1.0em;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .category-example p {
+            color: #34495e;
+            font-size: 0.9em;
+            line-height: 1.3;
+        }
+
+        .mathematical-lang-box {
+            background: linear-gradient(135deg, #fd79a8 10%, #fdcb6e 100%);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 15px 0;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        /* 圏論スライド専用の調整 */
+        .category-theory-slide .slide-content {
+            padding-top: 5px;
+        }
+
+        .category-theory-slide .two-column {
+            margin: 10px 0;
+            gap: 20px;
+        }
+
+        .category-theory-slide .bullet-list li {
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 1.0em;
+            line-height: 1.2;
+        }
+
+        .category-theory-slide .key-point {
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 1.1em;
+            line-height: 1.2;
+        }
+
+        .category-theory-slide .author-credit {
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -419,16 +550,121 @@
                 </div>
                 <div class="author-info">
                     <p>新幹線での発見から生まれた学問横断的統合理論</p>
-                    <p style="margin-top: 20px; font-size: 1.1em;">【構成】理論概要 → 圏論的統合分析 → 実用的含意</p>
+                    <p style="margin-top: 20px; font-size: 1.1em;">【構成】圏論基礎 → 理論概要 → 圏論的統合分析 → 実用的含意</p>
                 </div>
             </div>
         </div>
 
-        <!-- セクション1：IEEE 42010 -->
+        <!-- セクション1：圏論基礎 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="section-divider">
-                    <h2>第1部：基礎理論の理解</h2>
+                    <h2>第1部：圏論の基礎理解</h2>
+                    <p>統合理論の数学的基盤</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 圏論とは何か？ -->
+        <div class="slide category-theory-slide">
+            <div class="slide-header">
+                <h2 class="slide-title">圏論とは何か？</h2>
+                <p class="slide-subtitle">数学的構造の関係性を記述する普遍的言語</p>
+            </div>
+            <div class="slide-content">
+                <div class="category-diagram">
+                    <div class="category-object">対象 A</div>
+                    <div class="category-arrow">
+                        <div class="category-arrow-label">射 f: A→B</div>
+                    </div>
+                    <div class="category-object">対象 B</div>
+                </div>
+
+                <div class="mathematical-lang-box">
+                    圏論は「対象間の関係性（射）」に注目する数学的枠組み
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3>圏論の基本概念</h3>
+                        <ul class="bullet-list">
+                            <li><strong>対象（objects）：</strong>集合、空間、構造など</li>
+                            <li><strong>射（morphisms/arrows）：</strong>対象間の関係・変換</li>
+                            <li><strong>射の合成（composition）：</strong>関係性の連鎖</li>
+                            <li><strong>恒等射（identity）：</strong>自己関係</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>圏論の特徴</h3>
+                        <ul class="bullet-list">
+                            <li>「モノそのもの」ではなく「モノとモノの関係性」に着目</li>
+                            <li>様々な数学的構造を統一的に扱う枠組み</li>
+                            <li>抽象度が高く、幅広い現象を記述可能</li>
+                            <li>関係の関係（高次の関係）を扱える</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 圏論的解釈の価値 -->
+        <div class="slide category-theory-slide">
+            <div class="slide-header">
+                <h2 class="slide-title">圏論的解釈の動機と価値</h2>
+                <p class="slide-subtitle">発達過程を数学的に記述する圏論の力</p>
+            </div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div>
+                        <h3>解釈の動機</h3>
+                        <div class="category-properties">
+                            <ul style="list-style: none; padding: 0;">
+                                <li>• <strong>数学的厳密性：</strong>発達過程を数学的に記述したい</li>
+                                <li>• <strong>関係性への着目：</strong>「能力そのもの」より「能力間の関係性」</li>
+                                <li>• <strong>階層的構造：</strong>レベル間の移行を数学的に理解したい</li>
+                                <li>• <strong>発達の一般法則：</strong>様々な領域に共通する発達パターンを抽出</li>
+                                <li>• <strong>理論の統合：</strong>他の発達理論との共通基盤を構築</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>圏論的解釈の価値・効用</h3>
+                        <div class="category-examples">
+                            <div class="category-example">
+                                <h4>🔬 質的変化の数学的記述</h4>
+                                <p>発達の不連続な飛躍（質的変化）を数学的に記述できる</p>
+                            </div>
+                            <div class="category-example">
+                                <h4>📊 発達アセスメント精緻化</h4>
+                                <p>発達支援の理論的基盤の提供</p>
+                            </div>
+                            <div class="category-example">
+                                <h4>🔮 発達予測</h4>
+                                <p>次の発達段階の予測が可能に</p>
+                            </div>
+                            <div class="category-example">
+                                <h4>🌉 学問横断的統合</h4>
+                                <p>認知科学と数学の架け橋、複雑システム理論との接続</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-point">
+                    圏論的解釈は、発達過程の本質を「関係性の変化」として捉える新たな視点を提供する
+                </div>
+
+                <div class="author-credit">
+                    フィッシャーのダイナミックスキル理論の圏論的解釈より
+                </div>
+            </div>
+        </div>
+
+        <!-- セクション2：基礎理論 -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="section-divider">
+                    <h2>第2部：基礎理論の理解</h2>
                     <p>IEEE 42010・構造構成主義・批判的実在論</p>
                 </div>
             </div>
@@ -478,60 +714,46 @@
             </div>
             <div class="slide-content">
                 <div class="ieee-metamodel">
-                    <svg class="metamodel-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="metamodel-svg" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
                         <!-- System of Interest -->
-                        <rect x="50" y="50" width="120" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
-                        <text x="110" y="75" text-anchor="middle" font-size="12" font-weight="bold">System of</text>
-                        <text x="110" y="90" text-anchor="middle" font-size="12" font-weight="bold">Interest</text>
+                        <rect x="60" y="40" width="140" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"/>
+                        <text x="130" y="60" text-anchor="middle" font-size="11" font-weight="bold">System-of-interest</text>
                         
                         <!-- Architecture -->
-                        <rect x="600" y="50" width="120" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-                        <text x="660" y="80" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
+                        <rect x="680" y="40" width="120" height="50" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="5"/>
+                        <text x="740" y="70" text-anchor="middle" font-size="11" font-weight="bold">Architecture</text>
                         
                         <!-- Stakeholder -->
-                        <rect x="50" y="170" width="120" height="60" fill="#e8f5e8" stroke="#388e3c" stroke-width="2"/>
-                        <text x="110" y="200" text-anchor="middle" font-size="12" font-weight="bold">利害関係者</text>
+                        <rect x="60" y="140" width="120" height="50" fill="#e8f5e8" stroke="#388e3c" stroke-width="2" rx="5"/>
+                        <text x="120" y="170" text-anchor="middle" font-size="11" font-weight="bold">Stakeholder</text>
                         
                         <!-- Architecture Description -->
-                        <rect x="300" y="170" width="120" height="60" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-                        <text x="360" y="195" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
-                        <text x="360" y="210" text-anchor="middle" font-size="12" font-weight="bold">記述</text>
+                        <rect x="380" y="140" width="140" height="50" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="5"/>
+                        <text x="450" y="160" text-anchor="middle" font-size="10" font-weight="bold">Architecture</text>
+                        <text x="450" y="175" text-anchor="middle" font-size="10" font-weight="bold">Description</text>
                         
                         <!-- Concern -->
-                        <rect x="50" y="290" width="120" height="60" fill="#fce4ec" stroke="#c2185b" stroke-width="2"/>
-                        <text x="110" y="320" text-anchor="middle" font-size="12" font-weight="bold">関心事</text>
+                        <rect x="60" y="240" width="120" height="50" fill="#fce4ec" stroke="#c2185b" stroke-width="2" rx="5"/>
+                        <text x="120" y="270" text-anchor="middle" font-size="11" font-weight="bold">Concern</text>
                         
                         <!-- Architecture Viewpoint -->
-                        <rect x="250" y="290" width="120" height="60" fill="#e1f5fe" stroke="#0277bd" stroke-width="2"/>
-                        <text x="310" y="315" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
-                        <text x="310" y="330" text-anchor="middle" font-size="12" font-weight="bold">ビューポイント</text>
+                        <rect x="240" y="340" width="130" height="50" fill="#e1f5fe" stroke="#0277bd" stroke-width="2" rx="5"/>
+                        <text x="305" y="360" text-anchor="middle" font-size="10" font-weight="bold">Architecture</text>
+                        <text x="305" y="375" text-anchor="middle" font-size="10" font-weight="bold">Viewpoint</text>
                         
                         <!-- Architecture View -->
-                        <rect x="450" y="290" width="120" height="60" fill="#f1f8e9" stroke="#689f38" stroke-width="2"/>
-                        <text x="510" y="315" text-anchor="middle" font-size="12" font-weight="bold">アーキテクチャ</text>
-                        <text x="510" y="330" text-anchor="middle" font-size="12" font-weight="bold">ビュー</text>
-                        
-                        <!-- Architecture Rationale -->
-                        <rect x="600" y="170" width="120" height="60" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-                        <text x="660" y="195" text-anchor="middle" font-size="12" font-weight="bold">Architecture</text>
-                        <text x="660" y="210" text-anchor="middle" font-size="12" font-weight="bold">Rationale</text>
+                        <rect x="520" y="340" width="120" height="50" fill="#f1f8e9" stroke="#689f38" stroke-width="2" rx="5"/>
+                        <text x="580" y="360" text-anchor="middle" font-size="10" font-weight="bold">Architecture</text>
+                        <text x="580" y="375" text-anchor="middle" font-size="10" font-weight="bold">View</text>
                         
                         <!-- Model Kind -->
-                        <rect x="200" y="410" width="100" height="50" fill="#f5f5f5" stroke="#757575" stroke-width="2"/>
-                        <text x="250" y="440" text-anchor="middle" font-size="11">Model Kind</text>
+                        <rect x="220" y="450" width="100" height="45" fill="#f5f5f5" stroke="#757575" stroke-width="2" rx="5"/>
+                        <text x="270" y="475" text-anchor="middle" font-size="10" font-weight="bold">Model Kind</text>
                         
                         <!-- Architecture Model -->
-                        <rect x="400" y="410" width="100" height="50" fill="#f5f5f5" stroke="#757575" stroke-width="2"/>
-                        <text x="450" y="430" text-anchor="middle" font-size="11">Architecture</text>
-                        <text x="450" y="445" text-anchor="middle" font-size="11">Model</text>
-                        
-                        <!-- Correspondence Rule -->
-                        <rect x="550" y="290" width="100" height="30" fill="#ffecb3" stroke="#ff8f00" stroke-width="1"/>
-                        <text x="600" y="310" text-anchor="middle" font-size="10">コレスポンデンス</text>
-                        
-                        <!-- Correspondence -->
-                        <rect x="650" y="290" width="100" height="30" fill="#ffecb3" stroke="#ff8f00" stroke-width="1"/>
-                        <text x="700" y="310" text-anchor="middle" font-size="10">コレスポンデンス</text>
+                        <rect x="520" y="450" width="120" height="45" fill="#f5f5f5" stroke="#757575" stroke-width="2" rx="5"/>
+                        <text x="580" y="470" text-anchor="middle" font-size="10" font-weight="bold">Architecture</text>
+                        <text x="580" y="485" text-anchor="middle" font-size="10" font-weight="bold">Model</text>
                         
                         <!-- Arrows -->
                         <defs>
@@ -540,26 +762,65 @@
                             </marker>
                         </defs>
                         
-                        <!-- System of Interest -> Architecture -->
-                        <line x1="170" y1="80" x2="600" y2="80" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
-                        <text x="385" y="75" text-anchor="middle" font-size="10">exhibits</text>
+                        <!-- System-of-interest exhibits Architecture -->
+                        <line x1="200" y1="65" x2="680" y2="65" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="440" y="60" text-anchor="middle" font-size="9" fill="#333">exhibits</text>
                         
-                        <!-- Stakeholder -> Concern -->
-                        <line x1="110" y1="230" x2="110" y2="290" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
-                        <text x="130" y="260" font-size="10">has</text>
+                        <!-- Stakeholder has interests in System-of-interest -->
+                        <line x1="120" y1="140" x2="130" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="80" y="120" font-size="8" fill="#333">has interests in</text>
                         
-                        <!-- Concern -> Viewpoint -->
-                        <line x1="170" y1="320" x2="250" y2="320" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
-                        <text x="210" y="315" text-anchor="middle" font-size="10">frames</text>
+                        <!-- Stakeholder has Concern -->
+                        <line x1="120" y1="190" x2="120" y2="240" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="130" y="220" font-size="9" fill="#333">has</text>
                         
-                        <!-- Viewpoint -> View -->
-                        <line x1="370" y1="320" x2="450" y2="320" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
-                        <text x="410" y="315" text-anchor="middle" font-size="10">governs</text>
+                        <!-- Concern frames Architecture Viewpoint -->
+                        <line x1="180" y1="265" x2="240" y2="365" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="200" y="320" font-size="9" fill="#333">frames</text>
                         
-                        <!-- Architecture Description links -->
-                        <line x1="360" y1="230" x2="360" y2="290" stroke="#333" stroke-width="1"/>
-                        <line x1="300" y1="200" x2="250" y2="200" stroke="#333" stroke-width="1"/>
-                        <line x1="420" y1="200" x2="450" y2="200" stroke="#333" stroke-width="1"/>
+                        <!-- Architecture Viewpoint governs Architecture View -->
+                        <line x1="370" y1="365" x2="520" y2="365" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="445" y="360" text-anchor="middle" font-size="9" fill="#333">governs</text>
+                        
+                        <!-- Architecture Viewpoint identifies Architecture Description -->
+                        <line x1="305" y1="340" x2="420" y2="190" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="350" y="270" font-size="8" fill="#333">identifies</text>
+                        
+                        <!-- Architecture View addresses Architecture Description -->
+                        <line x1="560" y1="340" x2="470" y2="190" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="520" y="270" font-size="8" fill="#333">addresses</text>
+                        
+                        <!-- Architecture Description expresses Architecture -->
+                        <line x1="520" y1="165" x2="680" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="600" y="130" font-size="9" fill="#333">expresses</text>
+                        
+                        <!-- Model Kind governs Architecture Model -->
+                        <line x1="320" y1="472" x2="520" y2="472" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="420" y="467" text-anchor="middle" font-size="9" fill="#333">governs</text>
+                        
+                        <!-- Architecture View (1..*) to Architecture Model -->
+                        <line x1="580" y1="390" x2="580" y2="450" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="590" y="420" font-size="8" fill="#333">1..*</text>
+                        
+                        <!-- Multiplicity labels -->
+                        <text x="210" y="60" font-size="8" fill="#333">1</text>
+                        <text x="670" y="60" font-size="8" fill="#333">1</text>
+                        <text x="100" y="135" font-size="8" fill="#333">1..*</text>
+                        <text x="140" y="105" font-size="8" fill="#333">1</text>
+                        <text x="100" y="235" font-size="8" fill="#333">1..*</text>
+                        <text x="140" y="200" font-size="8" fill="#333">1..*</text>
+                        <text x="180" y="280" font-size="8" fill="#333">1..*</text>
+                        <text x="230" y="380" font-size="8" fill="#333">1..*</text>
+                        <text x="380" y="380" font-size="8" fill="#333">1</text>
+                        <text x="510" y="380" font-size="8" fill="#333">1</text>
+                        <text x="285" y="345" font-size="8" fill="#333">1..*</text>
+                        <text x="430" y="195" font-size="8" fill="#333">1</text>
+                        <text x="540" y="345" font-size="8" fill="#333">1..*</text>
+                        <text x="490" y="195" font-size="8" fill="#333">1</text>
+                        <text x="530" y="155" font-size="8" fill="#333">1</text>
+                        <text x="670" y="105" font-size="8" fill="#333">1</text>
+                        <text x="330" y="485" font-size="8" fill="#333">1</text>
+                        <text x="510" y="485" font-size="8" fill="#333">1..*</text>
                     </svg>
                 </div>
                 
@@ -744,11 +1005,11 @@
             </div>
         </div>
 
-        <!-- セクション2：統合理論 -->
+        <!-- セクション3：統合理論 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="section-divider">
-                    <h2>第2部：圏論的統合分析</h2>
+                    <h2>第3部：圏論的統合分析</h2>
                     <p>3つの理論の数学的統一構造の発見</p>
                 </div>
             </div>
@@ -1054,7 +1315,7 @@
         <!-- Navigation -->
         <div class="navigation">
             <button class="nav-btn" onclick="previousSlide()" id="prevBtn">前へ</button>
-            <span class="page-info" id="pageInfo">1 / 15</span>
+            <span class="page-info" id="pageInfo">1 / 21</span>
             <button class="nav-btn" onclick="nextSlide()" id="nextBtn">次へ</button>
         </div>
     </div>
